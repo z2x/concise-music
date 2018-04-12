@@ -44,7 +44,7 @@ export default class App extends React.Component {
     return (
       <div>
         <Header />
-        <Progress progress={this.state.progress} onProgressChange={this.progressChangeHandler} />
+        <Progress progress={this.state.progress} onProgressChange={this.progressChangeHandler} barColor="#ff0000" />
       </div>
     );
   }

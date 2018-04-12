@@ -4,6 +4,9 @@ import '../css/progress.scss';
 export default class Progress extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      barColor: '#2f9842',
+    };
     this.changeProgress = this.changeProgress.bind(this);
   }
 
@@ -23,7 +26,7 @@ export default class Progress extends React.Component {
   render() {
     return (
       <div className="components-progress" onClick={this.changeProgress} ref='progressBar'>
-        <div className="progress" style={{width: `${this.props.progress}%`}}>
+        <div className="progress" style={{width: `${this.props.progress}%`, background: this.props.barColor }}>
 
         </div>
       </div>
