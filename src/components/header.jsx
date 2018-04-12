@@ -6,7 +6,9 @@ export default class Header extends React.Component {
   render() {
     return (
       <div className="components-header">
-        <img src={logo} alt="logo" />
+        <div className="logo row">
+          <img src={logo} alt="logo" className="-col-auto" />
+        </div>
         <h1 className="caption">Concise Music Player</h1>
       </div>
     );

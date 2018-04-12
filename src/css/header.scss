@@ -4,8 +4,13 @@
   border-bottom: 1px solid #ccc;
   background: white;
 
-  img {
-    width: 40px;
+  .logo {
+    padding: 5px 20px;
+    float: left;
+
+    img {
+      width: 40px;
+    }
   }
   .caption {
     font-size: 20px;

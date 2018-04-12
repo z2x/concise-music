@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import jPlayer from 'jplayer';
 import Progress from '../components/progress';
+import '../css/player.scss';
 
 let duration = null;
 export default class Player extends React.Component {
@@ -30,8 +31,37 @@ export default class Player extends React.Component {
 
   render() {
     return (
-      <div>
-        <Progress progress={this.state.progress} onProgressChange={this.progressChangeHandler} barColor="#ff0000" />
+      <div className="player-page">
+        <h1 className="caption">我的私人音乐坊 &gt;</h1>
+        <div className="mt20 row">
+          <div className="controll-wrapper">
+            <h2 className="music-title">歌曲名称</h2>
+            <h3 className="music-artist">歌手</h3>
+            <div className="row mt20">
+              <div className="left-time -col-auto">-2:00</div>
+              <div className="volume-container">
+                <i className="icon-volume rt" style={{top: 5, left: -5}}></i>
+                <div className="volume-wrapper">音量控制部分</div>
+              </div>
+            </div>
+            <div style={{ height: 10, lineHeight: '10px' }}>
+              <Progress progress={this.state.progress} onProgressChange={this.progressChangeHandler} barColor="#ff0000" />
+            </div>
+            <div className="mt35 row">
+              <div>
+                <i className="icon prev"> &lt; </i>
+                <i className="icon ml20 play"></i>
+                <i className="icon next ml20">&gt;</i>
+              </div>
+              <div className="-col-auto">
+                <i className="repeat-cycle icon"></i>
+              </div>
+            </div>
+          </div>
+          <div className="-col-auto cover">
+            <img src="" alt="歌曲封面" />
+          </div>
+        </div>
       </div>
     );
   }

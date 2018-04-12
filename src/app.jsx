@@ -7,7 +7,6 @@ import Player from './pages/player';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { progress: '-' };
   }
 
   componentDidMount() {
