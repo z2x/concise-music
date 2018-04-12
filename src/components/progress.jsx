@@ -4,9 +4,6 @@ import '../css/progress.scss';
 export default class Progress extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      barColor: '#2f9842',
-    };
     this.changeProgress = this.changeProgress.bind(this);
   }
 
@@ -18,18 +15,25 @@ export default class Progress extends React.Component {
     const progressBar = this.refs.progressBar;
 
     // 计算点击之后对应的进度值
-    const progress = (e.clientX - progressBar.getBoundingClientRect().left) / progressBar.clientWidth;
+    const progress =
+      (e.clientX - progressBar.getBoundingClientRect().left) / progressBar.clientWidth;
 
     this.props.onProgressChange && this.props.onProgressChange(progress);
   }
 
   render() {
     return (
-      <div className="components-progress" onClick={this.changeProgress} ref='progressBar'>
-        <div className="progress" style={{width: `${this.props.progress}%`, background: this.props.barColor }}>
-
-        </div>
+      <div className="components-progress" onClick={this.changeProgress} ref="progressBar">
+        <div
+          className="progress"
+          style={{ width: `${this.props.progress}%`, background: this.props.barColor }}
+        />
       </div>
     );
   }
 }
+
+// 设置组件默认值
+Progress.defaultProps = {
+  barColor: '#2f9842',
+};
