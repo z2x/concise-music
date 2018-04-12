@@ -7,11 +7,17 @@ export default class Progress extends React.Component {
     this.changeProgress = this.changeProgress.bind(this);
   }
 
+  // 当前的进度值计算公式：
+  // e.clientX - node.getBoundClinetReact().left
   changeProgress(e) {
     e.preventDefault();
+    // 获取DOM节点
     const progressBar = this.refs.progressBar;
+
+    // 计算点击之后对应的进度值
     const progress = (e.clientX - progressBar.getBoundingClientRect().left) / progressBar.clientWidth;
-    console.log(progress);
+
+    this.props.onProgressChange && this.props.onProgressChange(progress);
   }
 
   render() {
