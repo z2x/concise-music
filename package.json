@@ -2,7 +2,7 @@
   "name": "concise-music-player",
   "version": "1.0.0",
   "description": "Music player build with React, learn how to use React",
-  "main": "webpack.dev.js",
+  "main": "./src/index.jsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --open --config webpack.dev.js --mode development",
@@ -53,6 +53,8 @@
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
+    "jplayer": "^2.9.2",
+    "jquery": "^3.3.1",
     "react": "^16.3.1",
     "react-dom": "^16.3.1"
   }

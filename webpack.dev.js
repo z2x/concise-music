@@ -22,11 +22,11 @@ module.exports = merge(common, {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'style-loader'
+            loader: 'style-loader',
           }, {
-            loader: 'css-loader'
-          }
-        ]
+            loader: 'css-loader',
+          },
+        ],
       },
 
       // 加载scss
@@ -35,26 +35,26 @@ module.exports = merge(common, {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'style-loader' // creates style nodes from JS strings
+            loader: 'style-loader', // creates style nodes from JS strings
           }, {
-            loader: 'css-loader' // translates CSS into CommonJS
+            loader: 'css-loader', // translates CSS into CommonJS
           }, {
             loader: 'sass-loader', // compiles Sass to CSS
-          }
-        ]
-      }
-    ]
+          },
+        ],
+      },
+    ],
   },
 
   // 配置webpack-dev-server
   devServer: {
     hot: true,
     open: true,
-    inline: true
+    inline: true,
   },
 
   plugins: [
     //   热更新插件
     new webpack.HotModuleReplacementPlugin(),
-  ]
+  ],
 });
