@@ -3,10 +3,14 @@ import jPlayer from 'jplayer';
 import React from 'react';
 import Header from './components/header';
 import Player from './pages/player';
+import MusicList from './data/playlist';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      currentMusicItem: MusicList[1],
+    };
   }
 
   componentDidMount() {
@@ -24,7 +28,7 @@ export default class App extends React.Component {
     return (
       <div>
         <Header />
-        <Player />
+        <Player currentMusicItem={this.state.currentMusicItem} />
       </div>
     );
   }

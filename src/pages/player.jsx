@@ -35,7 +35,7 @@ export default class Player extends React.Component {
         <h1 className="caption">我的私人音乐坊 &gt;</h1>
         <div className="mt20 row">
           <div className="controll-wrapper">
-            <h2 className="music-title">歌曲名称</h2>
+            <h2 className="music-title">{this.props.currentMusicItem.title}</h2>
             <h3 className="music-artist">歌手</h3>
             <div className="row mt20">
               <div className="left-time -col-auto">-2:00</div>
