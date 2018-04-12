@@ -2,15 +2,12 @@ import $ from 'jquery';
 import jPlayer from 'jplayer';
 import React from 'react';
 import Header from './components/header';
-import Progress from './components/progress';
-
-let duration = null;
+import Player from './pages/player';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { progress: '-' };
-    this.progressChangeHandler = this.progressChangeHandler.bind(this);
   }
 
   componentDidMount() {
@@ -23,28 +20,12 @@ export default class App extends React.Component {
       supplied: 'mp3',
       wmode: 'window',
     });
-    $('#player').bind($.jPlayer.event.timeupdate, (e) => {
-      // 获取音频文件的总播放时长
-      duration = e.jPlayer.status.duration;
-      this.setState({
-        progress: e.jPlayer.status.currentPercentAbsolute,
-      });
-    });
   }
-
-  componentWillUnmount() {
-    $('#player').unbind($.jPlayer.event.timeupdate);
-  }
-
-  progressChangeHandler(progress) {
-    $('#player').jPlayer('play', duration * progress);
-  }
-
   render() {
     return (
       <div>
         <Header />
-        <Progress progress={this.state.progress} onProgressChange={this.progressChangeHandler} barColor="#ff0000" />
+        <Player />
       </div>
     );
   }
