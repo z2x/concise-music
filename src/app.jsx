@@ -3,7 +3,7 @@ import jPlayer from 'jplayer';
 import React from 'react';
 import Header from './components/header';
 import Player from './pages/player';
-import MusicList from './data/playlist';
+import { MusicList } from './data/playlist';
 
 export default class App extends React.Component {
   constructor(props) {
