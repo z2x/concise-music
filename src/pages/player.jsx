@@ -11,7 +11,10 @@ export default class Player extends React.Component {
     this.state = {
       progress: 0,
       volume: 0,
+      isPlay: true,
     };
+
+    this.changePlayStateHandle = this.changePlayStateHandle.bind(this);
   }
 
   componentDidMount() {
@@ -37,6 +40,18 @@ export default class Player extends React.Component {
     $('#player').jPlayer('volume', progress);
   }
 
+  changePlayStateHandle() {
+    if (this.state.isPlay) {
+      $('#player').jPlayer('pause');
+    } else {
+      $('#player').jPlayer('play');
+    }
+
+    this.setState({
+      isPlay: !this.state.isPlay,
+    });
+  }
+
   render() {
     return (
       <div className="player-page">
@@ -48,7 +63,7 @@ export default class Player extends React.Component {
             <div className="row mt20">
               <div className="left-time -col-auto">-2:00</div>
               <div className="volume-container">
-                <i className="icon-volume rt" style={{top: 5, left: -5}}>音量</i>
+                <i className="icon-volume rt" style={{top: 5, left: -5}}></i>
                 <div className="volume-wrapper">
                   <Progress progress={this.state.volume} onProgressChange={this.changeVolumeHandler} barColor='#aaa' />
                 </div>
@@ -59,9 +74,9 @@ export default class Player extends React.Component {
             </div>
             <div className="mt35 row">
               <div>
-                <i className="icon prev"> &lt; </i>
-                <i className="icon ml20 play"></i>
-                <i className="icon next ml20">&gt;</i>
+                <i className="icon prev"> </i>
+                <i className={`icon ml20  ${this.state.isPlay ? 'pause' : 'play'}`} onClick={this.changePlayStateHandle}></i>
+                <i className="icon next ml20"></i>
               </div>
               <div className="-col-auto">
                 <i className="repeat-cycle icon"></i>
