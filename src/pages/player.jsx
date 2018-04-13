@@ -70,7 +70,7 @@ export default class Player extends React.Component {
               </div>
             </div>
             <div style={{ height: 10, lineHeight: '10px' }}>
-              <Progress progress={this.state.progress} onProgressChange={this.progressChangeHandler} barColor="#ff0000" />
+              <Progress progress={this.state.progress} onProgressChange={this.progressChangeHandler} />
             </div>
             <div className="mt35 row">
               <div>
