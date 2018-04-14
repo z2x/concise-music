@@ -4,6 +4,7 @@ import jPlayer from 'jplayer';
 import Progress from '../components/progress';
 import '../css/player.scss';
 import { Link } from 'react-router-dom';
+import Pubsub from 'pubsub-js';
 
 let duration = null;
 export default class Player extends React.Component {
@@ -27,6 +28,14 @@ export default class Player extends React.Component {
         volume: e.jPlayer.options.volume * 100,
       });
     });
+  }
+
+  playPrev() {
+    Pubsub.publish('Play_Prev');
+  }
+
+  playNext() {
+    Pubsub.publish('Play_Next');
   }
 
   componentWillUnmount() {
@@ -75,9 +84,9 @@ export default class Player extends React.Component {
             </div>
             <div className="mt35 row">
               <div>
-                <i className="icon prev"> </i>
+                <i onClick={this.playPrev} className="icon prev"> </i>
                 <i className={`icon ml20  ${this.state.isPlay ? 'pause' : 'play'}`} onClick={this.changePlayStateHandle}></i>
-                <i className="icon next ml20"></i>
+                <i onClick={this.playNext} className="icon next ml20"></i>
               </div>
               <div className="-col-auto">
                 <i className="repeat-cycle icon"></i>
