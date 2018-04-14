@@ -5,12 +5,17 @@ import Header from './components/header';
 import Player from './pages/player';
 import { MusicList } from './data/playdata';
 import MusicPlayList from './pages/musicplaylist';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentMusicItem: MusicList[],
+      currentMusicItem: MusicList[0],
       musicList: MusicList,
     };
   }
@@ -30,7 +35,12 @@ export default class App extends React.Component {
     return (
       <div>
         <Header />
-        <MusicPlayList currentMusicItem={this.state.currentMusicItem} musicList={this.state.musicList} />
+        <Router>
+          <Switch>
+            <Route exact path='/' render = {() => <Player currentMusicItem={this.state.currentMusicItem} />} />
+            <Route path="/list" render = {() => <MusicPlayList currentMusicItem={this.state.currentMusicItem} musicList={this.state.musicList} />} />
+          </Switch>
+        </Router>
       </div>
     );
   }

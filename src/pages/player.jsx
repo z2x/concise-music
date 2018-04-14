@@ -3,6 +3,7 @@ import $ from 'jquery';
 import jPlayer from 'jplayer';
 import Progress from '../components/progress';
 import '../css/player.scss';
+import { Link } from 'react-router-dom';
 
 let duration = null;
 export default class Player extends React.Component {
@@ -55,7 +56,7 @@ export default class Player extends React.Component {
   render() {
     return (
       <div className="player-page">
-        <h1 className="caption">我的私人音乐坊 &gt;</h1>
+        <h1 className="caption"><Link to="/list">我的私人音乐坊 &gt;</Link></h1>
         <div className="mt20 row">
           <div className="controll-wrapper">
             <h2 className="music-title">{this.props.currentMusicItem.title}</h2>
