@@ -14,9 +14,19 @@ export default class Player extends React.Component {
       progress: 0,
       volume: 0,
       isPlay: true,
+      leftTime: ' ',
     };
 
     this.changePlayStateHandle = this.changePlayStateHandle.bind(this);
+  }
+
+  // 时间格式化
+  formatTime(time) {
+    time = Math.floor(time);
+    let minutes = Math.floor(time / 60);
+    let seconds = Math.floor(time % 60);
+    seconds = seconds < 10 ? `0${seconds}` : seconds;
+    return `${minutes}:${seconds}`;
   }
 
   componentDidMount() {
@@ -26,6 +36,7 @@ export default class Player extends React.Component {
       this.setState({
         progress: e.jPlayer.status.currentPercentAbsolute,
         volume: e.jPlayer.options.volume * 100,
+        leftTime: this.formatTime(duration * (1 - e.jPlayer.status.currentPercentAbsolute / 100)),
       });
     });
   }
@@ -71,7 +82,7 @@ export default class Player extends React.Component {
             <h2 className="music-title">{this.props.currentMusicItem.title}</h2>
             <h3 className="music-artist">{this.props.currentMusicItem.artist}</h3>
             <div className="row mt20">
-              <div className="left-time -col-auto">-2:00</div>
+              <div className="left-time -col-auto">{this.state.leftTime}</div>
               <div className="volume-container">
                 <i className="icon-volume rt" style={{top: 5, left: -5}}></i>
                 <div className="volume-wrapper">
