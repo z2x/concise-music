@@ -10,7 +10,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentMusicItem: MusicList[1],
+      currentMusicItem: MusicList[],
       musicList: MusicList,
     };
   }
