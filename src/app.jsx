@@ -10,6 +10,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
+import Pubsub from 'pubsub-js';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -20,16 +21,39 @@ export default class App extends React.Component {
     };
   }
 
+  playMusic(musicItem) {
+    $('#player').jPlayer('setMedia', {
+      mp3: musicItem.file,
+    }).jPlayer('play');
+    this.setState({
+      currentMusicItem: musicItem,
+    });
+  }
+
   componentDidMount() {
     $('#player').jPlayer({
-      ready() {
-        $(this).jPlayer('setMedia', {
-          mp3: 'http://hao.haolingsheng.com/ring/000/987/83ce1ce486cabaeca68f4f5bbe5c7e3b.mp3',
-        }).jPlayer('play');
-      },
       supplied: 'mp3',
       wmode: 'window',
     });
+
+    this.playMusic(this.state.currentMusicItem);
+
+    Pubsub.subscribe('Play_Music', (message, musicItem) => {
+      this.playMusic(musicItem);
+    })
+
+    Pubsub.subscribe('Delete_Music', (message, musicItem) => {
+        this.setState({
+          musicList: this.state.musicList.filter( item => {
+            return item !== musicItem;
+          })
+        })
+    })
+  }
+
+  componentWillUnmount() {
+    Pubsub.unsubscribe('Play_Music');
+    Pubsub.unsubscribe('Delete_Music');
   }
   render() {
     return (
