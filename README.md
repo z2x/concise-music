@@ -13,5 +13,5 @@
 项目运行：
 1. 把文件夹clone到本地；
 2. 安装依赖：`npm install`
-3. 启动项目：'npm start'
+3. 启动项目：`npm start`
 4. 编译打包：`npm run build`
